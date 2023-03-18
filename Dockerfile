@@ -1,11 +1,11 @@
 FROM golang:alpine AS builder
+ADD . /app
+WORKDIR /app
+ARG TARGETOS
+ARG TARGETARCH
+RUN apk add --no-cache gcc musl-dev
 
-RUN apk add --no-cache --update git gcc rust
-
-COPY . /src
-WORKDIR /src
-
-RUN CGO_ENABLED=0 go build -a -ldflags "-linkmode external -extldflags -static" -o /usr/local/bin/supervisord github.com/ochinchina/supervisord
+RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -a -ldflags "-linkmode external -extldflags -static" -o /usr/local/bin/supervisord
 
 FROM scratch
 
