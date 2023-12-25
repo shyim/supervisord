@@ -3,9 +3,8 @@ ADD . /app
 WORKDIR /app
 ARG TARGETOS
 ARG TARGETARCH
-RUN apk add --no-cache gcc musl-dev
 
-RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -a -ldflags "-linkmode external -extldflags -static -s -w" -o /usr/local/bin/supervisord
+RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -a -ldflags "-s -w" -trimpath -o /usr/local/bin/supervisord
 
 FROM scratch
 
