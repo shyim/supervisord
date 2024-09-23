@@ -20,7 +20,7 @@ require (
 	github.com/ochinchina/supervisord/types v0.0.0-20230902082938-c2cae38b7454
 	github.com/ochinchina/supervisord/util v0.0.0-20230902082938-c2cae38b7454
 	github.com/ochinchina/supervisord/xmlrpcclient v0.0.0-20230902082938-c2cae38b7454
-	github.com/prometheus/client_golang v1.20.3
+	github.com/prometheus/client_golang v1.20.4
 	github.com/sirupsen/logrus v1.9.3
 )
 
